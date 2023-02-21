@@ -1,0 +1,61 @@
+﻿<div class="container-fluid bg-light py-5">
+    <div class="row justify-content-center text-center">
+        <div class="col-lg-8">
+            <h1 class="display-4 mb-3">Short URL</h1>
+            <p class="lead mb-5">Easily shorten any long URL to a short one!</p>
+
+            <form novalidate onsubmit="return false" class="shortenform">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input id="FullUrl" name="fullUrl" class="form-control form-control-lg" type="url" placeholder="Paste the URL to be shortened" required>
+                        <button id="btnSubmit" type="submit" class="btn btn-lg btn-success">Shorten</button>
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a valid URL.
+                    </div>
+                </div>
+            </form>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <p class="lead">Your short URL is:</p>
+                    <div class="input-group">
+                        <input id="shortUrl" disabled class="form-control" value="">
+                        <button class="btn btn-outline-secondary" type="button" onclick="copyToClipboard('#shortUrl')">Copy</button>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <div class="card bg-light border-warning">
+                        <div class="card-body text-center">
+                            <p class="card-text lead">Count Clicks:</p>
+                            <input id="countUrl" disabled class="btn btn-lg btn-warning" value="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/shorten.module.js" type="module"></script>
+    <script src="~/js/design.js" type="text/html"></script>
+    <script>
+        function copyToClipboard(selector) {
+            var copyText = document.querySelector(selector);
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /* For mobile devices */
+            document.execCommand("copy");
+            alert("Copied the text: " + copyText.value);
+        }
+    </script>
+}
+
+
+
+
+
+
